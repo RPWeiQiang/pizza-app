@@ -89,7 +89,7 @@ function Filter({ setFilter }) {
 
 function Menu() {
     const [filter, setFilter] = useState("all");
-
+    const timeNow = new Date().getHours();
     // Filter pizza data based on selected filter
     const filteredPizzaData = pizzaData.filter(pizza => {
         if (filter === "available") {
@@ -116,6 +116,7 @@ function Menu() {
         <div className='menu'>
             <h2>Our Menu</h2>
             <Filter filter={filter} setFilter={setFilter} />
+            {timeNow >= 10 && timeNow < 22 ? <p>Authentic Italian Cuisine</p> : ""}
             <div className='pizzas'>
                 {pizzaList}
             </div>
